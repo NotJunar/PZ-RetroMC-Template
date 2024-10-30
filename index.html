@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RetroMC Server</title>
+    <style>
+        /* Yo! Wanna change colors? Just mess with these hex codes! */
+        :root {
+            --bg-color: #000;
+            --text-color: #0f0;
+            --header-bg: #333;
+            --nav-bg: #444;
+            --section-bg: #222;
+        }
+
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Courier New', Courier, monospace;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        #page-container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        #content-wrap {
+            flex: 1 0 auto;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+        }
+        header {
+            background: var(--header-bg);
+            color: var(--text-color);
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: var(--text-color) 3px solid;
+        }
+        header h1 {
+            margin: 0;
+            text-align: center;
+            font-size: 3em;
+        }
+        nav {
+            background: var(--nav-bg);
+            padding: 10px 0;
+        }
+        nav ul {
+            padding: 0;
+            list-style: none;
+            text-align: center;
+        }
+        nav li {
+            display: inline;
+            margin: 0 10px;
+        }
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 18px;
+        }
+        main {
+            padding: 20px 0;
+        }
+        .server-info {
+            background: var(--section-bg);
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid var(--text-color);
+        }
+        footer {
+            flex-shrink: 0;
+            background: var(--header-bg);
+            color: var(--text-color);
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+        }
+        #cursor {
+            animation: blink 0.7s infinite;
+        }
+        @keyframes blink {
+            0% {opacity: 0;}
+            50% {opacity: 1;}
+            100% {opacity: 0;}
+        }
+        .retro-animation {
+            overflow: hidden;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--text-color); }
+        }
+    </style>
+</head>
+<body>
+    <div id="page-container">
+        <div id="content-wrap">
+            <header>
+                <div class="container">
+                    <h1>RetroMC Server</h1>
+                </div>
+            </header>
+
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#rules">Rules</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+
+            <main class="container">
+                <section class="server-info">
+                    <h2>Server Information</h2>
+                    <p>IP: play.retromc.com</p>
+                    <p>Version: 1.19.2</p>
+                    <p>Players Online: <span id="playerCount">42</span>/100</p>
+                </section>
+
+                <section id="about">
+                    <h2 class="retro-animation">About Us</h2>
+                    <p>Welcome to RetroMC, a Minecraft server with a retro twist! We offer a unique gaming experience that combines modern Minecraft gameplay with a nostalgic, old-school aesthetic.</p>
+                </section>
+
+                <section id="rules">
+                    <h2>Server Rules</h2>
+                    <ul>
+                        <li>No griefing or stealing</li>
+                        <li>Be respectful to all players</li>
+                        <li>No cheating or using hacks</li>
+                        <li>Have fun!</li>
+                    </ul>
+                </section>
+            </main>
+        </div>
+
+        <footer>
+            <p>Template by NotJunar @ PZ Development<span id="cursor">|</span></p>
+        </footer>
+    </div>
+
+    <script>
+        // Wanna change how often the player count updates? Mess with the 5000 below!
+        function updatePlayerCount() {
+            const playerCount = document.getElementById('playerCount');
+            const newCount = Math.floor(Math.random() * 100) + 1;
+            playerCount.textContent = newCount;
+        }
+        setInterval(updatePlayerCount, 5000);
+    </script>
+</body>
+</html>
